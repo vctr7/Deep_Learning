@@ -1,4 +1,4 @@
-### Overview
+## Overview
 
 Transform the parameters and compare the performance of tasks.
 
@@ -22,7 +22,7 @@ Transform the parameters and compare the performance of tasks.
 
 ### Summary
 
-  This project has several helpful points, such as back-propagation, activation functions, and layered network structure. Unlike task1, which denotes basic linear regression model, task2 and task3 need somewhat sophisticated methods. So, they perform better than the simple one with higher accuracy. 
+  This project has several helpful concepts, such as back-propagation, activation functions, and layered network structure. Unlike task1, which denotes basic linear regression model, task2 and task3 need somewhat sophisticated methods. So, they perform better than the simple one with higher accuracy. 
 Without using the built-in functions(Tensorflow etc), I had to type the code manually. 
 
 By doing these, I could understand its operation mechanism more deeply.
