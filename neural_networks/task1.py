@@ -57,7 +57,6 @@ start = time.time()
 for iter in range(K):
     z = np.dot(w.T, x_train) + b
     a = sigmoid(z)
-    # print(a)
     cost = cross_entropy(y_train, a) / m
 
     dz = a - y_train
