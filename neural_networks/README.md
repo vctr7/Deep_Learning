@@ -20,9 +20,9 @@ Transform the parameters and compare the performance of tasks.
 
 ### Summary
 
-  This project has several helpful concepts, such as back-propagation, activation functions, and layered network structure. Unlike task1, which denotes basic linear regression model, task2 and task3 need somewhat sophisticated methods. So, they perform better than the first one with showing the higher accuracy. 
+  This project has several helpful concepts, such as back-propagation, activation functions, and layered network structure. Unlike task1, which denotes basic linear regression model, task2 and task3 need somewhat sophisticated methods. Thus, they perform better than the first one with showing the high accuracy. 
 
-I set learning rate as 0.4, somewhat higher than general situation because the increasing inclination is generated with this value. If I suppose the alpha as normal(alpha<=0.01), then the second and the third underperform than the first one.
+I set learning rate as 0.4, somewhat higher than general situation because the increasing tendency is resulted with this value. If I position the alpha as regular(<=0.01), then the second and the third underperform even beneath the first one.
 
 I used tanh activation function at first hidden layer and sigmoid for the output layer. Also, I calculate cost by cross entropy function.
 
