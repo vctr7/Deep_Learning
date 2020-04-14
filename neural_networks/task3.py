@@ -1,15 +1,18 @@
 import numpy as np
 import time
 
+n = 100
+m = 1000
+K = 1000
+alpha = 0.4
+
 
 def sigmoid(x):
     return 1 / (1 + np.exp(-x))
 
 
 def cross_entropy(y, y_hat):
-    p1 = np.dot(y.T, np.log(y_hat).T)
-    p2 = np.dot((1-y.T), np.log(1 - y_hat.T))
-    return -(p1 + p2)
+    return -(np.dot(y.T, np.log(np.maximum(1e-10, y_hat)).T) + np.dot((1-y.T), np.log(np.maximum(1e-10, 1 - y_hat.T))))
 
 
 def relu(x):
@@ -20,11 +23,7 @@ def tanh(x):
     return (np.exp(x)-np.exp(-x))/(np.exp(x)+np.exp(-x))
 
 
-n = 100
-m = 1000
-K = 1000
-alpha = 0.4
-
+# load
 load_train = np.load('train_data.npz')
 x_train = load_train['xtrain']
 y_train = load_train['ytrain']
@@ -33,8 +32,9 @@ load_test = np.load('test_data.npz')
 x_test = load_test['xtest']
 y_test = load_test['ytest']
 
-w1 = np.random.randn(3, 2) * 0.01
-b1 = np.random.randn(3, 1) * 0.01
+# initialization
+w1 = np.random.randn(3, 2) / np.sqrt(2)
+b1 = np.random.randn(3, 1) / np.sqrt(2)
 w2 = np.random.randn(1, 3) * 0.01
 b2 = np.random.randn(1) * 0.01
 
@@ -47,16 +47,15 @@ for iter3 in range(K):
 
     # 2nd layer
     z2 = np.dot(w2, a1) + b2
-    aa = sigmoid(z2)
-    cost = cross_entropy(y_train, aa)
+    a2 = sigmoid(z2)
 
-    # back propagation
-    dz2 = aa - y_train
+    # back propagation of 2nd layer
+    dz2 = a2 - y_train
     dw2 = np.dot(a1, dz2.T) / m
     db2 = np.sum(dz2) / m
 
-    # derive tanh
-    dz1 = np.multiply(np.dot(w2.T, dz2), 1 - np.power(a1, 2))
+    # back propagation of 1st layer
+    dz1 = np.multiply(np.dot(w2.T, dz2), 1 - np.power(a1, 2))   # derive tanh(x) = (1 - x^2)
     dw1 = np.dot(x_train, dz1.T) / m
     db1 = np.sum(dz1, axis=1, keepdims=True) / m
 
@@ -66,21 +65,29 @@ for iter3 in range(K):
     w2 = w2 - (dw2.T*alpha)
     b2 = b2 - (db2*alpha)
 
-aa[aa > 0.5] = 1
-aa[aa <= 0.5] = 0
-acc = np.sum(aa == y_train)
+a2[a2 > 0.5] = 1
+a2[a2 <= 0.5] = 0
+acc1 = np.sum(a2 == y_train)
+cost = cross_entropy(y_train, a2) / m
 checkpoint1 = time.time()
-print('train accuracy :' + str((acc*100)/m) + '%')
-print('tratin time : ', checkpoint1 - start)
+
+print("=============Train==============")
+print('ACCURACY :' + str((100*acc1)/m) + '%')
+print('TIME : ', checkpoint1 - start)
+print('COST :', cost)
 
 # test
 new_z1 = np.dot(w1, x_test) + b1
 new_a1 = tanh(new_z1)
 new_z1 = np.dot(w2, new_a1) + b2
 new_a2 = sigmoid(new_z1)
+
 new_a2[new_a2 > 0.5] = 1
 new_a2[new_a2 <= 0.5] = 0
+acc2 = np.sum(new_a2 == y_test)
+cost = cross_entropy(y_test, new_a2) / n
 
-acc = np.sum(new_a2 == y_test)
-print('test accuracy :' + str((100*acc)/n) + '%')
-print('test time : ', time.time() - checkpoint1)
+print("=============Test==============")
+print('ACCURACY :' + str((100*acc2)/n) + '%')
+print('TIME : ', time.time() - checkpoint1)
+print('COST :', cost)
