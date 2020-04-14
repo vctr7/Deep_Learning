@@ -2,13 +2,11 @@
 
 Transform the parameters and compare the performance of tasks.
 
-#### task1.py (Vectorized linear regression)
+- task1.py (Vectorized linear regression)
 
+- task2.py (task1.py + activation function)
 
-#### task2.py (task1.py + activation function)
-
-
-#### task3.py (task2.py + neural networks)
+- task3.py (task2.py + neural networks)
 
 
 ### Result
