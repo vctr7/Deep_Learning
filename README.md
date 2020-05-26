@@ -6,6 +6,8 @@
 
 - [Neural Networks](https://github.com/vctr7/Deep_Learning/tree/master/neural_networks)
 
+- [Comparisons](https://github.com/vctr7/Deep_Learning/tree/master/comparisons)
+
 
 ## Financial Data Analytics
 
