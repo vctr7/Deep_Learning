@@ -30,7 +30,7 @@
 | Optimizer        | -                  | Adam             | Adam             |
 
 
-### Compare batch size
+### Compare batch size(Proceed on Google Colab TPU)
 
 
 |                  |  Mini-batch = 1  |  Mini-batch = 32 | Mini-batch = 128 | Mini-batch = 1000 |
