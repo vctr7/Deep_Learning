@@ -1,6 +1,7 @@
 ## 1.	Time comparison (element-wise version vs. vectorized version)
 
 Element wise(for-loops) :  0.17304396629333496 s 
+
 Vectorized version : 0.0046100616455078125 s
 
 Vectorized version is approximately 37.5x faster than element wise method.
