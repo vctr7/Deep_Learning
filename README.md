@@ -9,6 +9,6 @@
 - [Comparisons](https://github.com/vctr7/Deep_Learning/tree/master/comparisons)
 
 
-## Financial Data Analytics
+## Financial Data Analysis
 
 - [Market Judgement](https://github.com/vctr7/Deep_Learning/tree/master/Financial_data_analysis)
