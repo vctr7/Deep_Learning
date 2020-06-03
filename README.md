@@ -8,6 +8,7 @@
 
 - [Comparisons](https://github.com/vctr7/Deep_Learning/tree/master/comparisons)
 
+- [Image Restoration](https://github.com/vctr7/Deep_Learning/tree/master/image_restoration)
 
 ## Financial Data Analysis
 
